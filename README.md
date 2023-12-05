@@ -1,4 +1,7 @@
 # final-project
+- Click [here]() to view deployed website!
+## Screenshots
+
 ## Description
 - 
 ## Challenges & Successes:
@@ -18,6 +21,8 @@
 - Clone repository to VSCode 
 - Run `npm install` in the terminal
 - 
+- 
+## Future Development:
 - 
 ## Credits:
 - Previous Modules from University of Denver BootCamp 
