@@ -51,21 +51,34 @@ export const deleteCity = (cityId, token) => {
 };
 
 // make a search to Nomad List Cities api (!!!!!! UPDATE)
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
 
-const url = 'https://nomad-list-cities.p.rapidapi.com/nomad-list/europe?size=20&page=1&sort=desc&sort_by=overall_score';
-const options = {
-  method: 'GET',
-  headers: {
-    'X-RapidAPI-Key': '57a746aabcmsh658867c83d6065ap1700c3jsn4f3fcf862c0f',
-    'X-RapidAPI-Host': 'nomad-list-cities.p.rapidapi.com'
-  }
-};
+// const url = 'https://nomad-list-cities.p.rapidapi.com/nomad-list/europe?size=20&page=1&sort=desc&sort_by=overall_score';
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     'X-RapidAPI-Key': '57a746aabcmsh658867c83d6065ap1700c3jsn4f3fcf862c0f',
+//     'X-RapidAPI-Host': 'nomad-list-cities.p.rapidapi.com'
+//   }
+// };
 
-try {
-  const response = await fetch(url, options);
-  const result = await response.text();
-  console.log(result);
-} catch (error) {
-  console.error(error);
+// try {
+//   const response = await fetch(url, options);
+//   const result = await response.text();
+//   console.log(result);
+// } catch (error) {
+//   console.error(error);
+// }
+
+export const searchNomadCities = (query) => {
+  const url = `https://nomad-list-cities.p.rapidapi.com/nomad-list/${query}?size=20&page=1&sort=desc&sort_by=overall_score`;
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '57a746aabcmsh658867c83d6065ap1700c3jsn4f3fcf862c0f',
+      'X-RapidAPI-Host': 'nomad-list-cities.p.rapidapi.com'
+    }
+  };
+
+  return fetch(url, options)
 }
