@@ -2,8 +2,8 @@ import React from "react";
 import 'bulma/css/bulma.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { onError } from 'apollo-link-error';
-import { ApolloLink } from 'apollo-link';
+// import { onError } from 'apollo-link-error';
+import { ApolloLink } from '@apollo/client';
 
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -27,14 +27,14 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  if (graphQLErrors) {
-    console.log('graphQLErrors', graphQLErrors);
-  }
-  if (networkError) {
-    console.log('networkError', networkError);
-  }
-});
+// const errorLink = onError(({ graphQLErrors, networkError }) => {
+//   if (graphQLErrors) {
+//     console.log('graphQLErrors', graphQLErrors);
+//   }
+//   if (networkError) {
+//     console.log('networkError', networkError);
+//   }
+// });
 
 const link = ApolloLink.from([errorLink, authLink.concat(httpLink)]);
 
