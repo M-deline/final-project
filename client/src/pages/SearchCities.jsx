@@ -6,8 +6,6 @@ import { saveCity, searchNomadCities } from '../utils/API';
 import { SAVE_CITY} from '../utils/mutations';
 import {useMutation} from '@apollo/client';
 
-import { saveCityIds, getSavedCityIds } from '../utils/localStorage';
-
 
 
 const SearchCities = () => {
