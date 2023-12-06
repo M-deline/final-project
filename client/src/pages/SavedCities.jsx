@@ -1,12 +1,4 @@
 import { useState, useEffect } from 'react';
-import {
-  Container,
-  Card,
-  Button,
-  Row,
-  Col
-} from 'react-bootstrap';
-
 import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_CITY } from "../utils/mutations";
@@ -19,7 +11,6 @@ const SavedCities = () => {
 
   const userData = data?.me || {};
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteCity = async (cityId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -31,50 +22,55 @@ const SavedCities = () => {
       const { data } = await removeCity({
         variables: { cityId },
       });
-      // upon success, remove book"s id from localStorage
       removeCityId(cityId);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
   if (loading) {
     return <h2>LOADING...</h2>;
   }
 
   return (
-    <Container>
-      <div  className="text-light bg-dark p-5">
-        <Container>
-          <h1>Viewing saved cities!</h1>
-        </Container>
-      </div>
-      <Container>
+    <div className="container">
+      <section className="hero is-dark">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title">Viewing saved cities!</h1>
+          </div>
+        </div>
+      </section>
+      <div className="container">
         <h2 className='pt-5'>
           {userData.savedCities.length
             ? `Viewing ${userData.savedCities.length} saved ${userData.savedCities.length === 1 ? 'city' : 'cities'}:`
             : 'You have no saved cities!'}
         </h2>
-        <Row>
+        <div className="columns is-multiline">
           {userData.savedCities.map((city) => {
             return (
-              <Card key={city.cityId} border='dark'>
-              {city.image ? <Card.Img src={city.image} alt={`The cover for `} variant='top' /> : null}
-              <Card.Body>
-                <Card.Title>{city.name}</Card.Title>
-                {/* <p className='small'>Authors: {book.authors}</p> */}
-                <Card.Text>{city.description}</Card.Text>
-                <Button className='btn-block btn-danger' onClick={() => handleDeleteCity(city.cityId)}>
-                  Delete this City!
-                </Button>
-              </Card.Body>
-            </Card>
+              <div className="column is-one-third" key={city.cityId}>
+                <div className="card">
+                  {city.image ? <div className="card-image"><figure className="image is-4by3"><img src={city.image} alt={`The cover for `} /></figure></div> : null}
+                  <div className="card-content">
+                    <div className="media">
+                      <div className="media-content">
+                        <p className="title is-4">{city.name}</p>
+                      </div>
+                    </div>
+                    <div className="content">{city.description}</div>
+                  </div>
+                  <footer className="card-footer">
+                    <a href="#" className="card-footer-item has-text-danger" onClick={() => handleDeleteCity(city.cityId)}>Delete this City!</a>
+                  </footer>
+                </div>
+              </div>
             );
           })}
-        </Row>
-      </Container>
-    </Container>
+        </div>
+      </div>
+    </div>
   );
 };
 

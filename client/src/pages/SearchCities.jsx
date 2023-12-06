@@ -1,19 +1,14 @@
 import { useState, useEffect } from 'react';
-import {
-  Container,
-  Col,
-  Form,
-  Button,
-  Card,
-  Row
-} from 'react-bootstrap';
-
 import Auth from '../utils/auth';
 import { saveCityIds, getSavedCityIds } from '../utils/localStorage';
 import { saveCity, searchNomadCities } from '../utils/API';
 
 import { SAVE_CITY} from '../utils/mutations';
 import {useMutation} from '@apollo/client';
+
+import { saveCityIds, getSavedCityIds } from '../utils/localStorage';
+
+
 
 const SearchCities = () => {
   // create state for holding returned google api data
@@ -89,70 +84,77 @@ const SearchCities = () => {
     }
   };
 
-  return (
-    <>
-      <div className="text-light bg-dark p-5">
-        <Container>
-          <h1>Search for Cities!</h1>
-          <Form onSubmit={handleFormSubmit}>
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  name='searchInput'
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type='text'
-                  size='lg'
-                  placeholder='Search for a city'
-                />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type='submit' variant='success' size='lg'>
-                  Submit Search
-                </Button>
-              </Col>
-            </Row>
-          </Form>
-        </Container>
-      </div>
-
-      <Container>
-        <h2 className='pt-5'>
-          {searchedCities.length
-            ? `Viewing ${searchedCities.length} results:`
-            : 'Search for a country to begin'}
-        </h2>
-        <Row>
-          {searchedCities.map((city) => {
-            return (
-              <Col md="4" key={city.cityId}>
-                <Card border='dark'>
-                  {city.image ? (
-                    <Card.Img src={city.image} alt={`The cover for ${city.name}`} variant='top' />
-                  ) : null}
-                  <Card.Body>
-                    <Card.Title>{city.name}</Card.Title>
-                    {/* <p className='small'>Authors: {City.authors}</p> */}
-                    <Card.Text>{city.description}</Card.Text>
-                    {Auth.loggedIn() && (
-                      <Button
-                        disabled={savedCityIds?.some((savedCityId) => savedCityId === city.cityId)}
-                        className='btn-block btn-info'
-                        onClick={() => handleSaveCity(City.CityId)}>
-                        {savedCityIds?.some((savedCityId) => savedCityId === city.cityId)
-                          ? 'This City has already been saved!'
-                          : 'Save this City!'}
-                      </Button>
-                    )}
-                  </Card.Body>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
-    </>
-  );
-};
-
-export default SearchCities;
+    return (
+      <>
+        <div className="has-text-light has-background-dark p-5">
+          <div className="container">
+            <h1 className="title">Search for Cities!</h1>
+            <form onSubmit={handleFormSubmit}>
+              <div className="columns">
+                <div className="column is-8">
+                  <input
+                    className='input is-large'
+                    name='searchInput'
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    type='text'
+                    placeholder='Search for a city'
+                  />
+                </div>
+                <div className="column is-4">
+                  <button className='button is-success is-large' type='submit'>
+                    Submit Search
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <div className="container">
+          <h2 className='pt-5 title'>
+            {searchedCities.length
+              ? `Viewing ${searchedCities.length} results:`
+              : 'Search for a country to begin'}
+          </h2>
+          <div className="columns is-multiline">
+            {searchedCities.map((city) => {
+              return (
+                <div className="column is-4" key={city.cityId}>
+                  <div className="card">
+                    {city.image ? (
+                      <div className="card-image">
+                        <figure className="image is-4by3">
+                          <img src={city.image} alt={`The cover for ${city.name}`} />
+                        </figure>
+                      </div>
+                    ) : null}
+                    <div className="card-content">
+                      <div className="media">
+                        <div className="media-content">
+                          <p className="title is-4">{city.name}</p>
+                          <p className="subtitle is-6">{city.description}</p>
+                        </div>
+                      </div>
+                      {Auth.loggedIn() && (
+                        <button
+                          disabled={savedCityIds?.some((savedCityId) => savedCityId === city.cityId)}
+                          className='button is-fullwidth is-info'
+                          onClick={() => handleSaveCity(city.cityId)}>
+                          {savedCityIds?.some((savedCityId) => savedCityId === city.cityId)
+                            ? 'This City has already been saved!'
+                            : 'Save this City!'}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </>
+    );
+  };
+  
+  export default SearchCities;
