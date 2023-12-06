@@ -1,8 +1,7 @@
 import React from "react";
-
+import 'bulma/css/bulma.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 
