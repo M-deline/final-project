@@ -12,6 +12,7 @@
 ## Technologies Used:
 - Node.js
 - CSS
+- Bulma 
 - Mongoose / MongoDB
 - JavaScript
 - React

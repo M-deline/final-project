@@ -1,15 +1,12 @@
-import React from "react";
+// import React from "react";
 import 'bulma/css/bulma.css';
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, from, ApolloLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { onError } from 'apollo-link-error';
-import { ApolloLink } from 'apollo-link';
-
-
+import { onError } from '@apollo/client/link/error';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SearchCities from "./pages/SearchCities";
-import SavedCities from "./pages/SavedCities";
-import Navbar from "./components/Navbar";
+import SearchCities from "../pages/SearchCities";
+import SavedCities from "../pages/SavedCities";
+import Navbar from "../components/Navbar";
 
 // GraphQL API endpoint
 const httpLink = createHttpLink({
