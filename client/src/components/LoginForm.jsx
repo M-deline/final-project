@@ -39,6 +39,7 @@ const LoginForm = () => {
   return (
     <>
       {showAlert && <div className="notification is-danger">Something went wrong with your login credentials!</div>}
+      <h1 className='title is-2'>Login</h1>
       <form onSubmit={handleFormSubmit}>
         <div className="field">
           <label className="label" htmlFor='email'>Email</label>
@@ -71,7 +72,7 @@ const LoginForm = () => {
         </div>
         <div className="control">
           <button 
-            className="button is-link" 
+            className="button is-success" 
             disabled={!(userFormData.email && userFormData.password)}
             type='submit'
           >

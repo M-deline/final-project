@@ -47,12 +47,6 @@ const AppNavbar = () => {
               <button className="delete" aria-label="close" onClick={() => setShowModal(false)}></button>
             </header>
             <section className="modal-card-body">
-              <div className="tabs is-toggle is-toggle-rounded">
-                <ul>
-                  <li className="is-active"><a>Login</a></li>
-                  <li><a>Sign Up</a></li>
-                </ul>
-              </div>
               <LoginForm handleModalClose={() => setShowModal(false)} />
               <SignUpForm handleModalClose={() => setShowModal(false)} />
             </section>
