@@ -1,3 +1,14 @@
 * {
     font-family: 'Lexend', sans-serif;
 }
+nav {
+    font-size: x-large;
+}
+#home-name {
+    color: aliceblue;
+}
+#home-name:hover {
+    color: aliceblue;
+    text-decoration: none;
+    background-color: rgb(42, 42, 42);
+}

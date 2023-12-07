@@ -42,6 +42,7 @@ const SignupForm = () => {
       {showAlert && <div className="notification is-danger">Something went wrong with your signup!</div>}
 
       <form onSubmit={handleFormSubmit}>
+        <br></br>
         <h1 className='title is-2'>Sign Up</h1>
         <div className="field">
           <label className="label" htmlFor='username'>Username</label>
