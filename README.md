@@ -30,7 +30,7 @@
 ## Credits:
 - Coinspot. “Nomad List Cities Api Documentation (EMIR12): Rapidapi.” RapidAPI, Mar. 2023, rapidapi.com/emir12/api/nomad-list-cities. 
 - Previous Modules from University of Denver BootCamp 
-
+- Shaver-Troup, Bonnie, et al. “Lexend.” Google Fonts, Google, fonts.google.com/specimen/Lexend. Accessed 5 Dec. 2023. 
 ## Authors 
 - Amy: click [here](https://github.com/Akleynhans) to view her GitHub profile.
 - Madeline: click [here](https://github.com/M-deline) to view her GitHub profile.
