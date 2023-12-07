@@ -11,17 +11,16 @@ const AppNavbar = () => {
 
   return (
     <>
+      <div className="navbar is-dark">
+        <Link id='home-name' className="navbar-item" to='/'>
+          [Title of App] 
+        </Link>
+      </div>
       <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link className="navbar-item" to='/'>
-            [Title of App] 
-          </Link>
-        </div>
-
-        <div id="navbar" className="navbar-menu">
+        <div id="navbar" className="navbar-menu navbar-end">
           <div className="navbar-end">
             <Link className="navbar-item" to='/'>
-              Seach/Home
+              Home 
             </Link>
             {/* if user is logged in show saved cities and logout */}
             {Auth.loggedIn() ? (

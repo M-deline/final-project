@@ -100,7 +100,7 @@ const SearchCities = () => {
                   />
                 </div>
                 <div className="column is-4">
-                  <button className='button is-success is-large' type='submit'>
+                  <button className='button is-primary is-large' type='submit'>
                     Submit Search
                   </button>
                 </div>
@@ -113,8 +113,15 @@ const SearchCities = () => {
           <h2 className='pt-5 title'>
             {searchedCities.length
               ? `Viewing ${searchedCities.length} results:`
-              : 'Search for a country to begin'}
+              : 'Search for a country to begin!'}
           </h2>
+          {/* about us so that users know how this app works, moight have to change a bit once routes to search work depending on how it renders */}
+          <div className="container">
+            <br></br>
+            <h1 className='title'>About Us</h1>
+            <p className="subtitle">Welcome to [name of app]! This app was created for digital nomads or anyone who loves to travel and would like to view cities all around the world that matches their criteria. Simply start a search to begin and view a list of cities. If you like a city and want to add it to your list to view later, please sign up and make an account to save it to look at it later. </p>
+          </div>
+
           <div className="columns is-multiline">
             {searchedCities.map((city) => {
               return (
