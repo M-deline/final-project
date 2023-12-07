@@ -21,7 +21,7 @@ const AppNavbar = () => {
         <div id="navbar" className="navbar-menu">
           <div className="navbar-end">
             <Link className="navbar-item" to='/'>
-              Search for City/Home
+              Seach/Home
             </Link>
             {/* if user is logged in show saved cities and logout */}
             {Auth.loggedIn() ? (
