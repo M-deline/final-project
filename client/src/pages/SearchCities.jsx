@@ -29,33 +29,133 @@ const SearchCities = () => {
   const history = useNavigate();
 
   const handleAfricaClick = async () => {
-    const results = await searchNomadCities('africa');
-    console.log(results);
-    history.push('/results');
+    const searchInput = 'africa';
+    
+    try {
+      const items = await searchNomadCities(searchInput);
+  
+      const cityData = items.map((city) => ({
+        cityId: city.id,
+        name: city.name,
+        description: city.description,
+        image: city.image || '',
+      }));
+  
+      
+      setSearchedCities(cityData);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSearchedCities(cityData);
+
   };
   const handleAsiaClick = async () => {
-    const results = await searchNomadCities('asia');
-    console.log(results);
-    history.push('/results');
+    const searchInput = 'asia';
+    
+    try {
+      const items = await searchNomadCities(searchInput);
+  
+      const cityData = items.map((city) => ({
+        cityId: city.id,
+        name: city.name,
+        description: city.description,
+        image: city.image || '',
+      }));
+  
+      
+      setSearchedCities(cityData);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSearchedCities(cityData);
   };
   const handleAustraliaClick = async () => {
-    const results = await searchNomadCities('oceania');
-       console.log(results);
-    history.push('/results');
+    const searchInput = 'oceania';
+    
+    try {
+      const items = await searchNomadCities(searchInput);
+  
+      const cityData = items.map((city) => ({
+        cityId: city.id,
+        name: city.name,
+        description: city.description,
+        image: city.image || '',
+      }));
+  
+      
+      setSearchedCities(cityData);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSearchedCities(cityData);
   }
   const handleEuropeClick = async () => {
-    const results = await searchNomadCities('europe');
-    console.log(results);
+    const searchInput = 'europe';
+    
+    try {
+      const items = await searchNomadCities(searchInput);
+  
+      const cityData = items.map((city) => ({
+        cityId: city.id,
+        name: city.name,
+        description: city.description,
+        image: city.image || '',
+      }));
+  
+      
+      setSearchedCities(cityData);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSearchedCities(cityData);
     history.push('/results');
   }
   const handleNorthAmericaClick = async () => {
-    const results = await searchNomadCities('north-america');
-    console.log(results);
+    const searchInput = 'north-america';
+    
+    try {
+      const items = await searchNomadCities(searchInput);
+  
+      const cityData = items.map((city) => ({
+        cityId: city.id,
+        name: city.name,
+        description: city.description,
+        image: city.image || '',
+      }));
+  
+      
+      setSearchedCities(cityData);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSearchedCities(cityData);
     history.push('/results');
   }
   const handleSouthAmericaClick = async () => {
-    const results = await searchNomadCities('latin-america');
-    console.log(results);
+    const searchInput = 'latin-america';
+    
+    try {
+      const items = await searchNomadCities(searchInput);
+  
+      const cityData = items.map((city) => ({
+        cityId: city.id,
+        name: city.name,
+        description: city.description,
+        image: city.image || '',
+      }));
+  
+      
+      setSearchedCities(cityData);
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSearchedCities(cityData);
     history.push('/results');
   }
   // set up useEffect hook to save `savedCityIds` list to localStorage on component unmount
