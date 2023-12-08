@@ -26,37 +26,31 @@ const SearchCities = () => {
   });
 
   // create method to search for Citys and set state on form submit
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+  
     if (!searchInput) {
       return false;
     }
-
+  
     try {
-      const response = await searchNomadCities(searchInput);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
-      const { items } = await response.json();
-
+      const items = await searchNomadCities(searchInput);
+  
       const cityData = items.map((city) => ({
         cityId: city.id,
-        
         name: city.name,
         description: city.description,
-        image: city.image|| '',
+        image: city.image || '',
       }));
-
-
+  
       setSearchInput('');
       setSearchedCities(cityData);
     } catch (err) {
       console.error(err);
     }
   };
+
 
   // create function to handle saving city to our database
   const handleSaveCity = async (cityId) => {
