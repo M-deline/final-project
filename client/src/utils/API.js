@@ -70,15 +70,26 @@ export const deleteCity = (cityId, token) => {
 //   console.error(error);
 // }
 
-export const searchNomadCities = (query) => {
+export const searchNomadCities = async (query) => {
   const url = `https://nomad-list-cities.p.rapidapi.com/nomad-list/${query}?size=20&page=1&sort=desc&sort_by=overall_score`;
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '57a746aabcmsh658867c83d6065ap1700c3jsn4f3fcf862c0f',
+      'X-RapidAPI-Key': '6e82ef3af3mshd6558fca7054e98p1edac1jsn0daaf7085f65',
       'X-RapidAPI-Host': 'nomad-list-cities.p.rapidapi.com'
     }
   };
 
-  return fetch(url, options)
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error('Fetch request failed');
+    }
+    const result = await response.json();
+    console.log(result);
+    return result;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
