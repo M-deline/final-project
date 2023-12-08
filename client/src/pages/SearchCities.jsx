@@ -6,6 +6,13 @@ import { saveCity, searchNomadCities } from '../utils/API';
 import { SAVE_CITY} from '../utils/mutations';
 import {useMutation} from '@apollo/client';
 
+import { useNavigate } from 'react-router-dom';
+import Africa from '../assets/images/Africa.png';
+import Asia from '../assets/images/Asia.png';
+import Australia from '../assets/images/Australia.png';
+import Europe from '../assets/images/Europe.png';
+import NorthAmerica from '../assets/images/Namerica.png';
+import SouthAmerica from '../assets/images/Samerica.png';
 
 
 const SearchCities = () => {
@@ -19,6 +26,38 @@ const SearchCities = () => {
   // create state to hold saved CityId values
   const [savedCityIds, setSavedCityIds] = useState(getSavedCityIds());
 
+  const history = useNavigate();
+
+  const handleAfricaClick = async () => {
+    const results = await searchNomadCities('africa');
+    console.log(results);
+    history.push('/results');
+  };
+  const handleAsiaClick = async () => {
+    const results = await searchNomadCities('asia');
+    console.log(results);
+    history.push('/results');
+  };
+  const handleAustraliaClick = async () => {
+    const results = await searchNomadCities('oceania');
+       console.log(results);
+    history.push('/results');
+  }
+  const handleEuropeClick = async () => {
+    const results = await searchNomadCities('europe');
+    console.log(results);
+    history.push('/results');
+  }
+  const handleNorthAmericaClick = async () => {
+    const results = await searchNomadCities('north-america');
+    console.log(results);
+    history.push('/results');
+  }
+  const handleSouthAmericaClick = async () => {
+    const results = await searchNomadCities('latin-america');
+    console.log(results);
+    history.push('/results');
+  }
   // set up useEffect hook to save `savedCityIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
@@ -81,7 +120,15 @@ const SearchCities = () => {
         <div className="has-text-light has-background-dark p-5">
           <div className="container">
             <h1 className="title">Search for Cities!</h1>
-            <form onSubmit={handleFormSubmit}>
+            <div id='images'>
+                    <img src={Africa} alt="africa" onClick={handleAfricaClick} />
+                    <img src={Asia} alt="asia" onClick={handleAsiaClick} />
+                    <img src={Australia} alt="oceania" onClick={handleAustraliaClick} />
+                    <img src={Europe} alt="europe" onClick={handleEuropeClick} />
+                    <img src={NorthAmerica} alt="north-america" onClick={handleNorthAmericaClick} />
+                    <img src={SouthAmerica} alt="latin-america" onClick={handleSouthAmericaClick} />
+                    </div>
+            {/* <form onSubmit={handleFormSubmit}>
               <div className="columns">
                 <div className="column is-8">
                   <input
@@ -99,7 +146,7 @@ const SearchCities = () => {
                   </button>
                 </div>
               </div>
-            </form>
+            </form> */}
           </div>
         </div>
   
