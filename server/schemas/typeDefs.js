@@ -11,20 +11,18 @@ const typeDefs = gql`
   type City {
     _id: ID!
     CityId: String
-    description: String
+   
     name: String!
     image: String
-    country: String
-    overallScore: String
+
   }
   input savedCity {
     _id: ID!
     CityId: String
-    description: String
+ 
     name: String!
     image: String
-    country: String
-    overallScore: String
+
   }
   type Query {
     me: User

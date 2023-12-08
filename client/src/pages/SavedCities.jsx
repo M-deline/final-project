@@ -7,7 +7,7 @@ import { removeCityId } from '../utils/localStorage';
 
 const SavedCities = () => {
   const { loading, data } = useQuery(GET_ME);
-  const [removeCity, { error }] = useMutation(REMOVE_CITY);
+  const [removeCity] = useMutation(REMOVE_CITY);
 
   const userData = data?.me || {};
 

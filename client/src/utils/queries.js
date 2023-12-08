@@ -6,13 +6,10 @@ export const GET_ME = gql`
           _id
           username
           email
-          savedCitied {
+          savedCities {
             cityId
             name
-            country
-            description
-            image
-            overallScore
+
           }
             }
         }
