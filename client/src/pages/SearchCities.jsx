@@ -18,10 +18,8 @@ import SouthAmerica from '../assets/images/Samerica.png';
 const SearchCities = () => {
   // create state for holding returned api data
   const [searchedCities, setSearchedCities] = useState([]);
-  // create state for holding our search field data
-  // const [searchInput, setSearchInput] = useState('');
 
-  const [saveCity, { error }] = useMutation(SAVE_CITY);
+
 
   // create state to hold saved CityId values
   const [savedCityIds, setSavedCityIds] = useState(getSavedCityIds());
