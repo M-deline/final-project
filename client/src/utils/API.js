@@ -75,10 +75,11 @@ export const searchNomadCities = async (query) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '57a746aabcmsh658867c83d6065ap1700c3jsn4f3fcf862c0f',
+      'X-RapidAPI-Key': '6e82ef3af3mshd6558fca7054e98p1edac1jsn0daaf7085f65',
       'X-RapidAPI-Host': 'nomad-list-cities.p.rapidapi.com'
     }
   };
+  
 
   try {
     const response = await fetch(url, options);
@@ -93,3 +94,4 @@ export const searchNomadCities = async (query) => {
     throw error;
   }
 }
+
