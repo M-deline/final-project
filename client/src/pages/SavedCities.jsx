@@ -7,26 +7,26 @@ import { removeCityId } from '../utils/localStorage';
 
 const SavedCities = () => {
   const { loading, data } = useQuery(GET_ME);
-  const [removeCity] = useMutation(REMOVE_CITY);
+  // const [removeCity] = useMutation(REMOVE_CITY);
 
   const userData = data?.me || {};
 
-  const handleDeleteCity = async (cityId) => {
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+  // const handleDeleteCity = async (cityId) => {
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
-    }
+  //   if (!token) {
+  //     return false;
+  //   }
 
-    try {
-      const { data } = await removeCity({
-        variables: { cityId },
-      });
-      removeCityId(cityId);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //   try {
+  //     const { data } = await removeCity({
+  //       variables: { cityId },
+  //     });
+  //     removeCityId(cityId);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -42,11 +42,11 @@ const SavedCities = () => {
         </div>
       </section>
       <div className="container">
-        <h2 className='pt-5'>
+        {/* <h2 className='pt-5'>
           {userData.savedCities.length
             ? `Viewing ${userData.savedCities.length} saved ${userData.savedCities.length === 1 ? 'city' : 'cities'}:`
             : 'You have no saved cities!'}
-        </h2>
+        </h2> */}
         <div className="columns is-multiline">
           {userData.savedCities.map((city) => {
             return (
