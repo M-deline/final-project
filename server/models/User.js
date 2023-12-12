@@ -46,6 +46,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 
+userSchema.virtual('cityCount').get(function () {
+  return this.savedCities.length;
+});
+
 
 const User = model('User', userSchema);
 

@@ -7,7 +7,7 @@ const citySchema = new Schema({
     },
     description: {
         type: String,
-        required: true,
+       
     },
     name: {
         type: String,
@@ -21,7 +21,7 @@ const citySchema = new Schema({
     },
     overallScore: {
         type: String,
-        required: true,
+       
     },
 });
 
