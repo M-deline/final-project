@@ -30,7 +30,7 @@ export const loginUser = (userData) => {
 
 // save city data for a logged in user
 export const saveCity = (cityData, token) => {
-  return fetch('/api/savedcities', {
+  return fetch('/api/users', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
