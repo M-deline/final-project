@@ -4,9 +4,9 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink, ApolloLink
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SearchCities from "../pages/SearchCities";
-import SavedCities from "../pages/SavedCities";
-import Navbar from "../components/Navbar";
+import SearchCities from "../src/pages/SearchCities";
+import SavedCities from "../src/pages/SavedCities";
+import Navbar from "../src/components/Navbar";
 
 // GraphQL API endpoint
 const httpLink = createHttpLink({
