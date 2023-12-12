@@ -3,9 +3,13 @@ import Auth from '../utils/auth';
 import { saveCityIds, getSavedCityIds } from '../utils/localStorage';
 import { saveCity, searchNomadCities } from '../utils/API';
 
-import { SAVE_CITY } from '../utils/mutations';
-import { useMutation } from '@apollo/client';
+//to fix mobile view use react response docs 
+import { useMediaQuery } from 'react-responsive';
 
+import { SAVE_CITY} from '../utils/mutations';
+import {useMutation} from '@apollo/client';
+
+//use navigate instead of useHistory 
 import { useNavigate } from 'react-router-dom';
 import Africa from '../assets/images/Africa.png';
 import Asia from '../assets/images/Asia.png';
@@ -20,6 +24,7 @@ const SearchCities = () => {
   const [searchedCities, setSearchedCities] = useState([]);
 
 
+  const [saveCity, { error }] = useMutation(SAVE_CITY);
 
   // create state to hold saved CityId values
   const [savedCityIds, setSavedCityIds] = useState(getSavedCityIds());
@@ -155,7 +160,6 @@ const SearchCities = () => {
     }
 
   }
-
 
 
 

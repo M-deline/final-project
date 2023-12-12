@@ -13,25 +13,25 @@ const AppNavbar = () => {
     <>
       <div className="navbar is-dark">
         <Link id='home-name' className="navbar-item" to='/'>
-          [Title of App] 
+          Digital Nomads
         </Link>
       </div>
       <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
         <div id="navbar" className="navbar-menu navbar-end">
           <div className="navbar-end">
-            <Link className="navbar-item" to='/'>
+            <Link id="link" className="navbar-item" to='/'>
               Home 
             </Link>
             {/* if user is logged in show saved cities and logout */}
             {Auth.loggedIn() ? (
               <>
-                <Link className="navbar-item" to='/saved'>
+                <Link id="link" className="navbar-item" to='/saved'>
                   Profile/Saved
                 </Link>
-                <a className="navbar-item" onClick={Auth.logout}>Logout</a>
+                <a id="link" className="navbar-item" onClick={Auth.logout}>Logout</a>
               </>
             ) : (
-              <a className="navbar-item" onClick={() => setShowModal(true)}>Login/Sign Up</a>
+              <a id="link" className="navbar-item" onClick={() => setShowModal(true)}>Login/Sign Up</a>
             )}
           </div>
         </div>
