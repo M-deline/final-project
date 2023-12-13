@@ -23,8 +23,8 @@ const userSchema = new Schema(
     },
     savedCities: [{
       type: String,
-      trim: true,
-    }],
+    }]
+ 
   },
   {
     toJSON: {

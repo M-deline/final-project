@@ -6,10 +6,10 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    savedCities: [City]
+    savedCities: [String]
   }
   type City {
-    _id: ID!
+    
     cityId: String
    
     
@@ -17,7 +17,7 @@ const typeDefs = gql`
 
   }
   input savedCity {
-    _id: ID!
+    
     cityId: String
  
     
@@ -36,7 +36,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
     saveCity(userId: ID!, cityId: String!): User
-    removeCity(cityId: ID!): User
+    removeCity(userId: ID!, cityId: String!): User
   }
   type Auth {
     token: ID!

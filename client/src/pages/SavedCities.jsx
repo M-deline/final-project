@@ -54,19 +54,19 @@ const SavedCities = () => {
         <div className="columns is-multiline">
           {user.savedCities.map((city) => {
             return (
-              <div className="column is-one-third" key={city.cityId}>
+              <div className="column is-one-third" key={city}>
                 <div className="card">
-                  {city.image ? <div className="card-image"><figure className="image is-4by3"><img src={city.image} alt={`The cover for `} /></figure></div> : null}
+                  {city.image ? <div className="card-image"><figure className="image is-4by3"><img src={city} alt={`The cover for `} /></figure></div> : null}
                   <div className="card-content">
                     <div className="media">
                       <div className="media-content">
-                        <p className="title is-4">{city.name}</p>
+                        <p className="title is-4">{city}</p>
                       </div>
                     </div>
-                    <div className="content">{city.cityId}</div>
+                    <div className="content">{city}</div>
                   </div>
                   <footer className="card-footer">
-                    <a href="#" className="card-footer-item has-text-danger" onClick={() => handleDeleteCity(city.cityId)}>Delete this City!</a>
+                    <a href="#" className="card-footer-item has-text-danger" onClick={() => handleDeleteCity(city)}>Delete this City!</a>
                   </footer>
                 </div>
               </div>

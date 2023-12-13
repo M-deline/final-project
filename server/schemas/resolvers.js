@@ -41,7 +41,7 @@ const resolvers = {
         if (!user) {
           throw new AuthenticationError("No user found");
         }
-
+       
         const correctPw = await user.isCorrectPassword(password);
 
         if (!correctPw) {
@@ -59,11 +59,12 @@ const resolvers = {
     saveCity: async (_, { userId, cityId }) => {
         
       try {
-
+        
         return User.findOneAndUpdate(
           { _id: userId },
           { $addToSet: { savedCities: cityId } },
           { new: true, runValidators: true }
+       
         );
 
 
@@ -73,18 +74,18 @@ const resolvers = {
       }
     },
 
-    removeCity: async (_, { CityId }, context) => {
+    removeCity: async (_, { userId, cityId }) => {
 
       try {
-        if (context.user) {
+       
           const updatedUser = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $pull: { savedCities: { CityId } } },
+            { _id: userId },
+            { $pull: { savedCities: cityId  } },
             { new: true }
           );
           return updatedUser;
-        }
-        throw new AuthenticationError("Please login or register");
+        
+        
       } catch (error) {
         console.error(error);
         throw new AuthenticationError("Error removing City");
