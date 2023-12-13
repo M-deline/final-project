@@ -17,7 +17,7 @@ import Asia from '../assets/images/Asia.png';
 import Australia from '../assets/images/Australia.png';
 import Europe from '../assets/images/Europe.png';
 import NorthAmerica from '../assets/images/Namerica.png';
-import SouthAmerica from '../assets/images/Samerica.png';
+import SouthAmerica from '../assets/images/SAmerica.png';
 
 
 const SearchCities = () => {
