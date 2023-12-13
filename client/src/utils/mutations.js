@@ -30,11 +30,7 @@ export const SAVE_CITY = gql`
       _id
       username
       email
-      savedCities {
-        cityId
-    
-        
-      }
+      savedCities 
     }
   }
 `;

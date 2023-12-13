@@ -58,7 +58,8 @@ const SearchCities = () => {
     } catch (err) {
       console.error(err);
     }
-
+   
+    
    
   };
   const handleAsiaClick = async () => {
@@ -123,7 +124,7 @@ const SearchCities = () => {
     }
 
     
-    history.push('/results');
+  
   }
   const handleNorthAmericaClick = async () => {
     const searchInput = 'north-america';
@@ -145,7 +146,7 @@ const SearchCities = () => {
     }
 
     
-    history.push('/results');
+  
   }
   const handleSouthAmericaClick = async () => {
     const searchInput = 'latin-america';
@@ -167,7 +168,7 @@ const SearchCities = () => {
     }
 
     
-    history.push('/results');
+  
   };
 
   //to fix mobile view
@@ -228,7 +229,7 @@ const SearchCities = () => {
       });
 
       // if city successfully saves to user's account, save city id to state
-      setSavedCityIds([...savedCityIds, data.cityId]);
+      setSavedCityIds([...savedCityIds, cityId]);
     } catch (err) {
       console.error(err);
     }
@@ -301,7 +302,7 @@ const SearchCities = () => {
                     <div className="mobile-view-div">
                       <div className="mobile-view">
                         <p className="title is-4">{city.name}</p>
-                        <p className="subtitle is-6">{city.description}</p>
+                        <p className="subtitle is-6">{city.score}</p>
                       </div>
                     </div>
                     {Auth.loggedIn() && (
