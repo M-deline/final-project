@@ -8,7 +8,7 @@ export const GET_ME = gql`
           email
           savedCities {
             cityId
-            name
+           
 
           }
        }
@@ -16,7 +16,7 @@ export const GET_ME = gql`
 `;
 
 
-export const QUERY_USER = gql`
+export const QUERY_USERS = gql`
   query allUsers {
     users {
       _id
@@ -24,7 +24,7 @@ export const QUERY_USER = gql`
       email
       savedCities {
         cityId
-        name
+        
       }
     }
   }
@@ -38,8 +38,9 @@ export const QUERY_SINGLE_USER = gql`
       email
       savedCities {
         cityId
-        name
+       
       }
     }
   }
 `;
+

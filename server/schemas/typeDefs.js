@@ -12,16 +12,16 @@ const typeDefs = gql`
     _id: ID!
     cityId: String
    
-    name: String!
-    image: String
+    
+    
 
   }
   input savedCity {
     _id: ID!
     cityId: String
  
-    name: String!
-    image: String
+    
+    
 
   }
   type Query {

@@ -14,11 +14,10 @@ const resolvers = {
       return User.findOne({ _id: userId });
     },
 
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id });
-      }
-      throw new AuthenticationError("Error creating user");
+    me: async (parent, { userId }) => {
+      
+        return User.findOne({ _id: userId });
+    
     },
   },
 
@@ -58,16 +57,16 @@ const resolvers = {
     },
 
     saveCity: async (_, { userId, cityId }) => {
-
-      try {
-     
-          return User.findOneAndUpdate(
-            { _id: userId },
-            { $addToSet: { savedCities: cityId } },
-            { new: true, runValidators: true }
-          );
         
-      
+      try {
+
+        return User.findOneAndUpdate(
+          { _id: userId },
+          { $addToSet: { savedCities: cityId } },
+          { new: true, runValidators: true }
+        );
+
+
       } catch (error) {
         console.error(error);
         throw new AuthenticationError("Error saving City");

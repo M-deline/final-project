@@ -11,12 +11,14 @@ const SavedCities = () => {
   // const { userId } = useParams();
   // Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
   const userId = (Auth.loggedIn() && Auth.getProfile().data._id) ? Auth.getProfile().data._id : null;
+  
+
 
   // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   const { loading, data } = useQuery(
     userId ? QUERY_SINGLE_USER : GET_ME,
     {
-      variables: { userId: userId },
+      variables: { userId },
     }
   );
 
@@ -30,9 +32,10 @@ const SavedCities = () => {
   }
   
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_user` query
-  const user = data?.me || data?.user || {};
+  const user = data?.user || {};
   
-  console.log(userId);
+  console.log(user.savedCities);
+
   return (
     <div className="container">
       <section className="hero is-dark">
@@ -48,8 +51,8 @@ const SavedCities = () => {
             ? `Viewing ${userData.savedCities.length} saved ${userData.savedCities.length === 1 ? 'city' : 'cities'}:`
             : 'You have no saved cities!'}
         </h2> */}
-        {/* <div className="columns is-multiline">
-          {userData.savedCities.map((city) => {
+        <div className="columns is-multiline">
+          {user.savedCities.map((city) => {
             return (
               <div className="column is-one-third" key={city.cityId}>
                 <div className="card">
@@ -60,7 +63,7 @@ const SavedCities = () => {
                         <p className="title is-4">{city.name}</p>
                       </div>
                     </div>
-                    <div className="content">{city.description}</div>
+                    <div className="content">{city.cityId}</div>
                   </div>
                   <footer className="card-footer">
                     <a href="#" className="card-footer-item has-text-danger" onClick={() => handleDeleteCity(city.cityId)}>Delete this City!</a>
@@ -69,7 +72,7 @@ const SavedCities = () => {
               </div>
             );
           })}
-        </div> */}
+        </div>
       </div>
     </div>
   );
