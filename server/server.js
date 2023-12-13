@@ -14,21 +14,27 @@ const server = new ApolloServer({
 });
 
 const app = express();
-app.use(express.static(path.join(__dirname, '../client')));
-
-app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, '../client/index.html'));
-});
-const PORT = process.env.PORT || 3001;
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, '../client'), {
+  setHeaders: (res, path) => {
+      if (path.endsWith('.jsx')) {
+          res.setHeader('Content-Type', 'application/javascript');
+      }
+  }
+}));
 
 // if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
+
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, '../client/index.html'));
+});
+
+const PORT = process.env.PORT || 3001;
 
 // create a new instance of Apollo Server using GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
@@ -42,8 +48,6 @@ const startApolloServer = async (typeDefs, resolvers) => {
     });
   });
 };
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
-});
+
 // start server
 startApolloServer(typeDefs, resolvers);
