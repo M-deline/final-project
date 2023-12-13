@@ -1,11 +1,13 @@
-import ReactDOM from 'react-dom/client'
-// import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import 'bulma/css/bulma.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import 'bulma/css/bulma.css';
+import App from './App.jsx';
 
-import App from './App.jsx'
-// import SearchCities from './pages/SearchCities'
-// import SavedCities from './pages/SavedCities'
+const rootElement = document.getElementById('root');
+const root = ReactDOM.createRoot(rootElement);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <App />
-)
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
