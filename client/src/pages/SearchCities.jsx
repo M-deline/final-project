@@ -59,7 +59,7 @@ const SearchCities = () => {
       console.error(err);
     }
 
-    // setSearchedCities(cityData);
+   
   };
   const handleAsiaClick = async () => {
     const searchInput = 'asia';
@@ -80,7 +80,7 @@ const SearchCities = () => {
       console.error(err);
     }
 
-    setSearchedCities(cityData);
+  
   };
   const handleAustraliaClick = async () => {
     const searchInput = 'oceania';
@@ -101,7 +101,7 @@ const SearchCities = () => {
       console.error(err);
     }
 
-    setSearchedCities(cityData);
+   
   }
   const handleEuropeClick = async () => {
     const searchInput = 'europe';
@@ -122,7 +122,7 @@ const SearchCities = () => {
       console.error(err);
     }
 
-    setSearchedCities(cityData);
+    
     history.push('/results');
   }
   const handleNorthAmericaClick = async () => {
@@ -144,7 +144,7 @@ const SearchCities = () => {
       console.error(err);
     }
 
-    setSearchedCities(cityData);
+    
     history.push('/results');
   }
   const handleSouthAmericaClick = async () => {
@@ -166,7 +166,7 @@ const SearchCities = () => {
       console.error(err);
     }
 
-    setSearchedCities(cityData);
+    
     history.push('/results');
   };
 
@@ -221,17 +221,6 @@ const SearchCities = () => {
     
     setCityId(cityId);
 
-
-    // // find the city  by the matching id
-    // const cityToSave = searchedCities.find((city) => city.cityId === cityId);
-    // console.log(cityToSave);
-
-    // // get token
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    // if (!token) {
-    //   return false;
-    // }
 
     try {
       const { data } = await saveCity({
