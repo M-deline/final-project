@@ -10,8 +10,8 @@
         "preview": "vite preview"
     },
     "engines": {
-        "node": "14.x",
-        "npm": "6.x"
+        "node": "21.x",
+        "npm": "10.x"
     },
     "dependencies": {
         "@apollo/client": "^3.7.14",
