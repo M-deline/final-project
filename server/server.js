@@ -37,8 +37,8 @@ const startApolloServer = async (typeDefs, resolvers) => {
     });
   });
 };
-app.get('/', (req, res) => {
-  res.send('test');
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 // start server
 startApolloServer(typeDefs, resolvers);
