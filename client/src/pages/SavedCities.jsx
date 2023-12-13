@@ -1,37 +1,38 @@
 import { useState, useEffect } from 'react';
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_ME } from "../utils/queries";
+import { GET_ME, QUERY_SINGLE_USER } from "../utils/queries";
 import { REMOVE_CITY } from "../utils/mutations";
 import Auth from '../utils/auth';
 import { removeCityId } from '../utils/localStorage';
+import { Navigate, useParams } from 'react-router-dom';
+
 
 const SavedCities = () => {
-  const { loading, data } = useQuery(GET_ME);
-  // const [removeCity] = useMutation(REMOVE_CITY);
+  // const { userId } = useParams();
+  // Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
+  const userId = (Auth.loggedIn() && Auth.getProfile().data._id) ? Auth.getProfile().data._id : null;
 
-  const userData = data?.me || {};
+  // If there is no `userId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
+  const { loading, data } = useQuery(
+    userId ? QUERY_SINGLE_USER : GET_ME,
+    {
+      variables: { userId: userId },
+    }
+  );
 
-  // const handleDeleteCity = async (cityId) => {
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+  
 
-  //   if (!token) {
-  //     return false;
-  //   }
 
-  //   try {
-  //     const { data } = await removeCity({
-  //       variables: { cityId },
-  //     });
-  //     removeCityId(cityId);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
+  
+  
   if (loading) {
     return <h2>LOADING...</h2>;
   }
-
+  
+  // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_user` query
+  const user = data?.me || data?.user || {};
+  
+  console.log(userId);
   return (
     <div className="container">
       <section className="hero is-dark">
@@ -47,7 +48,7 @@ const SavedCities = () => {
             ? `Viewing ${userData.savedCities.length} saved ${userData.savedCities.length === 1 ? 'city' : 'cities'}:`
             : 'You have no saved cities!'}
         </h2> */}
-        <div className="columns is-multiline">
+        {/* <div className="columns is-multiline">
           {userData.savedCities.map((city) => {
             return (
               <div className="column is-one-third" key={city.cityId}>
@@ -68,7 +69,7 @@ const SavedCities = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

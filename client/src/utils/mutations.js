@@ -25,14 +25,14 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_CITY = gql`
-  mutation saveCity($cityData: savedCity!) {
-    saveCity(input: $cityData) {
+  mutation saveCity($userId: ID!, $cityId: String!) {
+    saveCity(userId: $userId, cityId: $cityId) {
       _id
       username
       email
       savedCities {
         cityId
-        name
+    
         
       }
     }

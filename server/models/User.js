@@ -21,7 +21,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    savedBCities: [citySchema],
+    savedCities: [{
+      type: String,
+      trim: true,
+    }],
   },
   {
     toJSON: {

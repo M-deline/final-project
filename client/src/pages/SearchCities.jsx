@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import Auth from '../utils/auth';
 import { saveCityIds, getSavedCityIds } from '../utils/localStorage';
-import { saveCity, searchNomadCities } from '../utils/API';
+import { searchNomadCities } from '../utils/API';
+
 
 //to fix mobile view use react response docs 
 import { useMediaQuery } from 'react-responsive';
 
-import { SAVE_CITY } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
+import { SAVE_CITY } from '../utils/mutations';
 
 //use navigate instead of useHistory 
 import { useNavigate } from 'react-router-dom';
@@ -20,12 +21,15 @@ import SouthAmerica from '../assets/images/Samerica.png';
 
 
 const SearchCities = () => {
+  const userId = (Auth.loggedIn() && Auth.getProfile().data._id) ? Auth.getProfile().data._id : null;
+  
   // create state for holding returned google api data
   const [searchedCities, setSearchedCities] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
 
-  // const [saveCity, { error }] = useMutation(SAVE_CITY);
+  const [saveCity, { error, data}] = useMutation(SAVE_CITY);
+  const [cityId, setCityId] = useState('');
 
   // create state to hold saved CityId values
   const [savedCityIds, setSavedCityIds] = useState(getSavedCityIds());
@@ -208,54 +212,34 @@ const SearchCities = () => {
   });
 
 
-  // create method to search for Citys and set state on form submit
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!searchInput) {
-      return false;
-    }
-
-    try {
-      const items = await searchNomadCities(searchInput);
-
-      const cityData = items.map((city) => ({
-        cityId: city.name,
-        name: city.name,
-        description: city.description,
-        image: city.image || '',
-      }));
-
-      setSearchInput('');
-      setSearchedCities(cityData);
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   // create function to handle saving city to our database
   const handleSaveCity = async (cityId) => {
     
     
+    
+    
+    setCityId(cityId);
 
-    // find the city  by the matching id
-    const cityToSave = searchedCities.find((city) => city.cityId === cityId);
 
-    // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    // // find the city  by the matching id
+    // const cityToSave = searchedCities.find((city) => city.cityId === cityId);
+    // console.log(cityToSave);
 
-    if (!token) {
-      return false;
-    }
+    // // get token
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    // if (!token) {
+    //   return false;
+    // }
 
     try {
       const { data } = await saveCity({
-        variables: { ...cityToSave },
+        variables: { userId, cityId},
       });
 
       // if city successfully saves to user's account, save city id to state
-      setSavedCityIds([...savedCityIds, cityToSave.cityId]);
+      setSavedCityIds([...savedCityIds, data.cityId]);
     } catch (err) {
       console.error(err);
     }
@@ -335,7 +319,8 @@ const SearchCities = () => {
                       <button
                         disabled={savedCityIds?.some((savedCityId) => savedCityId === city.cityId)}
                         className='button is-fullwidth is-info'
-                        onClick={() => handleSaveCity(city.name)} key={city.name} value={city.name}>
+                        onClick={(event) => handleSaveCity(city.name)} 
+                        value={city.name}>
                         {savedCityIds?.some((savedCityId) => savedCityId === city.cityId)
                           ? 'This City has already been saved!'
                           : 'Save this City!'}

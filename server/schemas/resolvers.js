@@ -6,18 +6,19 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    me: async (_parent, _args, context) => {
-      if (context.user) {
+    users: async () => {
+      return User.find();
+    },
 
-        try {
-          const userData = await User.findOne({ _id: context.user._id }).select('-__v -password');
-          return userData;
-        } catch (error) {
-          console.error(error);
-          throw new AuthenticationError("Error fetching user data");
-        }
+    user: async (parent, { userId }) => {
+      return User.findOne({ _id: userId });
+    },
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id });
       }
-      throw new AuthenticationError("No user found. Please login or register");
+      throw new AuthenticationError("Error creating user");
     },
   },
 
@@ -56,17 +57,17 @@ const resolvers = {
       }
     },
 
-    saveCity: async (_, { input }, context) => {
+    saveCity: async (_, { userId, cityId }) => {
 
       try {
-        if (context.user) {
+     
           return User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { savedCities: input } },
+            { _id: userId },
+            { $addToSet: { savedCities: cityId } },
             { new: true, runValidators: true }
           );
-        }
-        throw new AuthenticationError("Please login or register");
+        
+      
       } catch (error) {
         console.error(error);
         throw new AuthenticationError("Error saving City");
