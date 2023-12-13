@@ -23,6 +23,7 @@
     "dependencies": {
         "bulma": "^0.9.4",
         "dotenv": "^16.3.1",
+        "mongodb": "^6.3.0",
         "nodemon": "^3.0.2",
         "react-responsive": "^9.0.2"
     }

@@ -1,5 +1,5 @@
 # final-project
-- Click [here](heroku) to view deployed website!
+- Click [here](https://nomad-cities-5704d8a4d491.herokuapp.com/) to view deployed website!
 ## Table of Contents
 - [Screenshots](#screenshots)
 - [Description](#description)
@@ -8,7 +8,7 @@
 - [Future Development](#future-development)
 - [Credits & Sources](#credits--sources)
 - [Authors](#authors)
-## Screenshots
+## Screenshots and Mobile View Video
 <a name="screenshots"></a>
 Click this [link](https://watch.screencastify.com/v/vDIVZfYsMKZ4OhCdSpyK) to view a video showing the desktop version and the mobile device version of our website.
 
@@ -58,6 +58,7 @@ Click this [link](https://watch.screencastify.com/v/vDIVZfYsMKZ4OhCdSpyK) to vie
 - Previous Modules and Challenges from University of Denver BootCamp (specifically JWT, CSS, React, and GraphQL and previous challenges)
 - “React-Responsive.” Npm, 2022, www.npmjs.com/package/react-responsive. 
 - Shaver-Troup, Bonnie, et al. “Lexend.” Google Fonts, Google, fonts.google.com/specimen/Lexend. Accessed 5 Dec. 2023. 
+- A big thank you to our Instructor Dan from University of Denver Bootcamp for helping us with this application, specifically the save feature. 
 - Yocontra. “Yocontra/React-Responsive: CSS Media Queries in React - for Responsive Design, and More.” GitHub, 2020, github.com/yocontra/react-responsive. 
 
 ## Authors 

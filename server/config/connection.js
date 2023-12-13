@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/techmatchup', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://projectuser:projectuser@cluster-project.jwvyi1a.mongodb.net/', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -8,3 +8,4 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/techmatch
 .catch(err => console.error('Database connection error: ', err));
 
 module.exports = mongoose.connection;
+
