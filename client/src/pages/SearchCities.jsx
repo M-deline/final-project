@@ -49,7 +49,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        description: city.description,
+        score: city.overall_score,
         image: city.image || '',
       }));
 
@@ -70,7 +70,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        description: city.description,
+        score: city.overall_score,
         image: city.image || '',
       }));
 
@@ -89,9 +89,9 @@ const SearchCities = () => {
       const items = await searchNomadCities(searchInput);
 
       const cityData = items.map((city) => ({
-        cityId: city.id,
+        cityId: city.name,
         name: city.name,
-        description: city.description,
+        score: city.overall_score,
         image: city.image || '',
       }));
 
@@ -110,9 +110,9 @@ const SearchCities = () => {
       const items = await searchNomadCities(searchInput);
 
       const cityData = items.map((city) => ({
-        cityId: city.id,
+        cityId: city.name,
         name: city.name,
-        description: city.description,
+        score: city.overall_score,
         image: city.image || '',
       }));
 
@@ -132,9 +132,9 @@ const SearchCities = () => {
       const items = await searchNomadCities(searchInput);
 
       const cityData = items.map((city) => ({
-        cityId: city.id,
+        cityId: city.name,
         name: city.name,
-        description: city.description,
+        score: city.overall_score,
         image: city.image || '',
       }));
 
@@ -154,9 +154,9 @@ const SearchCities = () => {
       const items = await searchNomadCities(searchInput);
 
       const cityData = items.map((city) => ({
-        cityId: city.id,
+        cityId: city.name,
         name: city.name,
-        description: city.description,
+        score: city.overall_score,
         image: city.image || '',
       }));
 
