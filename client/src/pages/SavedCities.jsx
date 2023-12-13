@@ -8,6 +8,7 @@ import { Navigate, useParams } from 'react-router-dom';
 
 
 const SavedCities = () => {
+  const [removeCity] = useMutation(REMOVE_CITY);
   // const { userId } = useParams();
   // Use React Router's `<Redirect />` component to redirect to personal user page if username is yours
   const userId = (Auth.loggedIn() && Auth.getProfile().data._id) ? Auth.getProfile().data._id : null;
@@ -34,7 +35,15 @@ const SavedCities = () => {
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_user` query
   const user = data?.user || {};
   
-  console.log(user.savedCities);
+  const handleDeleteCity = async (cityId) => {
+    try {
+      const { data } = await removeCity({
+        variables: { cityId, userId},
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="container">

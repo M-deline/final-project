@@ -45,10 +45,7 @@ export const REMOVE_CITY = gql`
       _id
       username
       email
-      savedCities {
-        cityId
-
-      }
+      savedCities 
     }
   }
 `;
