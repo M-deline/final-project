@@ -14,6 +14,11 @@ const server = new ApolloServer({
 });
 
 const app = express();
+app.use(express.static(path.join(__dirname, '../client')));
+
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname, '../client/index.html'));
+});
 const PORT = process.env.PORT || 3001;
 
 app.use(express.urlencoded({ extended: true }));
