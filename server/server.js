@@ -37,6 +37,8 @@ const startApolloServer = async (typeDefs, resolvers) => {
     });
   });
 };
-
+app.get('/', (req, res) => {
+  res.send('test');
+});
 // start server
 startApolloServer(typeDefs, resolvers);
