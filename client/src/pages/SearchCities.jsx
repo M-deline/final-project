@@ -46,10 +46,12 @@ const SearchCities = () => {
     try {
       const items = await searchNomadCities(searchInput);
 
-      const cityData = items.map((city) => ({
+      const cityData = items.map((city) => (
+  
+        {
         cityId: city.name,
         name: city.name,
-        score: city.overall_score,
+        score: Math.round(city.overall_score * 10 ** 2)/ 10 ** 2,
         image: city.image || '',
       }));
 
@@ -71,7 +73,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        score: city.overall_score,
+        score: Math.round(city.overall_score * 10 ** 2)/ 10 ** 2,
         image: city.image || '',
       }));
 
@@ -92,7 +94,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        score: city.overall_score,
+        score: Math.round(city.overall_score * 10 ** 2)/ 10 ** 2,
         image: city.image || '',
       }));
 
@@ -113,7 +115,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        score: city.overall_score,
+        score: Math.round(city.overall_score * 10 ** 2)/ 10 ** 2,
         image: city.image || '',
       }));
 
@@ -135,7 +137,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        score: city.overall_score,
+        score: Math.round(city.overall_score * 10 ** 2)/ 10 ** 2,
         image: city.image || '',
       }));
 
@@ -157,7 +159,7 @@ const SearchCities = () => {
       const cityData = items.map((city) => ({
         cityId: city.name,
         name: city.name,
-        score: city.overall_score,
+        score: Math.round(city.overall_score * 10 ** 2)/ 10 ** 2,
         image: city.image || '',
       }));
 
@@ -302,7 +304,7 @@ const SearchCities = () => {
                     <div className="mobile-view-div">
                       <div className="mobile-view">
                         <p className="title is-4">{city.name}</p>
-                        <p className="subtitle is-6">{city.score}</p>
+                        <p className="subtitle is-6">Overall Score: {city.score}</p>
                       </div>
                     </div>
                     {Auth.loggedIn() && (

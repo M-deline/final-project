@@ -72,7 +72,7 @@ const SavedCities = () => {
                         <p className="title is-4">{city}</p>
                       </div>
                     </div>
-                    <div className="content">{city}</div>
+                    {/* <div className="content">{city}</div> */}
                   </div>
                   <footer className="card-footer">
                     <a href="#" className="card-footer-item has-text-danger" onClick={() => handleDeleteCity(city)}>Delete this City!</a>
